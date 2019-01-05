@@ -1,0 +1,20 @@
+<% if(course_selection !== undefined){ %>
+<div class='wrapper <%- page %> <%- course_selection %>'>
+<% } else { %>
+<div class='wrapper <%- page %>'>
+<% } %>
+    <div class='title'>Discrete Mathematics Study Center</div>
+    <div class='toggles'>
+        <div class='class-toggle COMP1805' data-value="COMP1805">1805</div>
+        <div class='class-toggle COMP2804' data-value="COMP2804">2804</div>
+    </div>
+    <a class='item index' href='/'>Home</a>
+    <a class='item notes' href='/notes'>Course Notes</a>
+    <a class='item exercises' href='/exercises'>Exercises</a>
+    <a class='item mock' href='/mock'>Mock Exam</a>
+    <a class='item about' href='/about'>About</a>
+    
+    <div class='bottom'>
+        <a class='item center' id='copyright' href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>© Richard Paul Inc.</a>
+    </div>
+</div>

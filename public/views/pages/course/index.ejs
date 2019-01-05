@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<html>
+
+<head>
+    <% include ../../meta/global %>
+    <style>
+        <% include ../../loadCSS/global/globalCSS/ %>
+
+        <% include ../../loadCSS/navbar/default/ %>
+
+        #content {
+            display: flex;
+        }
+        #contentBody {
+            padding: 25px 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='content'>
+        <div id='sidebar'>
+            <div id='contentSidebarPh'></div>
+            <div id='contentSidebar'>
+                <% include ../../partials/global/navbar/ %>
+            </div>
+        </div>
+        <div id='contentBody'>
+            <div class='body'>
+                <h1><%- page_title %></h1>
+                <p>Welcome to the Discrete Mathematics Study Center. This website is intended for <a href="http://www.scs.carleton.ca/">computer science</a> undergraduates at <a href="http://www.carleton.ca/">Carleton University</a> for use in the course <a href="http://calendar.carleton.ca/search/?P=COMP%201805">COMP 1805</a>. This website <em>does not replace</em> lectures: it should be used as a <em>study aid</em>. There is overwhelming evidence that students who do not attend lectures tend to do poorly in the course.</p>
+                <p>The <a href="notes.html">course notes</a> can be used to look up information that you may have missed during a lecture, and possibly to provide a slightly different perspective on the material covered in the course. They are likely too terse to be useful on their own.</p>
+                <p>The <a href="exercises.html">exercise database</a> is full of worked examples on many topics, such as logic, proofs, sets, functions, induction, relations, and graphs. Each exercise is categorized so students can easily find exercises in the area they are trying to study. In addition, each exercise is rated by difficulty level and possible applications are given. Exercises are also associated with keywords to facilitate searching.</p>
+                <p>The <a href="mock-exam.html">mock exam</a> is a 40-question multiple choice exam on all of the material covered in the course. It is based on a real final exam from a previous offering of the course.</p>
+                <p>This website makes use of <a href="http://www.mathjax.org/">MathJax</a> to display mathematics. You should enable JavaScript so that you can see all of the notation properly.</p>
+            </div>
+        </div>
+    </div>
+    <noscript id="deferred-styles">
+        <link rel="stylesheet" type="text/css" href="/css/course/about.css" />
+    </noscript>
+    <script>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement);
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+    </script>
+    <script type="text/javascript" async defer>
+        var adblock = true;
+    </script>
+    <script type="text/javascript" async defer>
+    [
+        '/js/global/global.js',
+        '/js/global/navbar.js',
+        '/js/global/imgtosvg.js', //--> Load svgs first
+        '/js/global/lazyload.js',
+    ].forEach(function(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        document.head.appendChild(script);
+    });
+    </script>
+</body>
+
+</html>
