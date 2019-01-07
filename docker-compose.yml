@@ -1,18 +1,23 @@
 version: '3'
 services:
   mongo-db:
-    image: mongo:latest
-    container_name: "mongodb"
+    image: mongo
+    restart: always
     environment:
-      - MONGO_DATA_DIR=/data/db
-      - MONGO_LOG_DIR=/dev/null
-      - MONGODB_USER="user"
-      - MONGODB_PASS="12345678"
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - ./data/db:/data/db
+      - data-volume:/data/db
     ports:
-        - 4002:27017
-    command: mongod --smallfiles --logpath=/dev/null
-  #web-server:
-  #  image
-  #data-server:
+      - '27017:27017'
+  web-server:
+    build:
+      context: ./
+      dockerfile: web_server/dockerfile
+  data-server:
+    build:
+      context: data_server/
+      dockerfile: dockerfile
+
+volumes:
+  data-volume:
