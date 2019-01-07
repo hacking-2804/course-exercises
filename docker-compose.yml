@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mongo-db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - data-volume:/data/db
+    ports:
+      - '27017:27017'
+  web-server:
+    build:
+      context: ./
+      dockerfile: web_server/dockerfile
+  data-server:
+    build:
+      context: data_server/
+      dockerfile: dockerfile
+
+volumes:
+  data-volume:

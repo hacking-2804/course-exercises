@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<html>
+
+<head>
+    <% include ../../meta/global %>
+    <style>
+        <% include ../../loadCSS/global/globalCSS/ %>
+
+        <% include ../../loadCSS/navbar/default/ %>
+
+        #content {
+            display: flex;
+        }
+        #contentBody {
+            padding: 25px 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='content'>
+        <div id='sidebar'>
+            <div id='contentSidebarPh'></div>
+            <div id='contentSidebar'>
+                <% include ../../partials/global/navbar/ %>
+            </div>
+        </div>
+        <div id='contentBody'>
+            <div class='body'>
+                <h1><%- page_title %></h1>
+
+                <p>This website was originally the "Discrete Mathematics Exercise Database". It was created by <a href="http://www.jitbose.ca/">Prosenjit Bose</a> and <a href="http://www.howat.ca/">John Howat</a>, and funded by a <a href="http://carleton.ca/facultyrecruitment/2014/teaching-achievement-award-winners/">Teaching Achievement Award</a> in 2008. At that time, it consisted only of the exercise section. A significant overhaul took place in 2015: <a href="http://www.howat.ca/">John Howat</a> added his course notes from the 2014-15 academic year, as well as a mock exam based on the final exam from the Winter 2015 semester, and redesigned the website.</p>
+			
+                <p>Feedback is always welcome, especially in the form of corrections or ideas for expansion. Please forward your feedback to <a href="mailto:jit@scs.carleton.ca">Prosenjit Bose</a>.</p>
+            </div>
+        </div>
+    </div>
+    <noscript id="deferred-styles">
+        <link rel="stylesheet" type="text/css" href="/css/course/about.css" />
+    </noscript>
+    <script>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement);
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+    </script>
+    <script type="text/javascript" async defer>
+        var adblock = true;
+    </script>
+    <script type="text/javascript" async defer>
+    [
+        '/js/global/global.js',
+        '/js/global/navbar.js',
+        '/js/global/imgtosvg.js', //--> Load svgs first
+        '/js/global/lazyload.js',
+    ].forEach(function(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        document.head.appendChild(script);
+    });
+    </script>
+</body>
+
+</html>

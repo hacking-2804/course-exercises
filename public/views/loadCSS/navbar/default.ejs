@@ -1,0 +1,77 @@
+#contentSidebar, #contentSidebarPh {
+    display: flex;
+    flex-direction: column;            
+    width: 300px;
+    color: #fcfcfc;
+    background: #343131;
+    height: 100%;
+}
+#contentSidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#contentSidebar .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#contentSidebar .item {
+    padding: 15px 24px;
+}
+#contentSidebar .title {
+    font-weight: 700;
+    font-size: 100%;
+    letter-spacing: 0.02em;
+    background: #2980B9;
+    background: linear-gradient(#2980B9, #2E91D3);
+    padding: 24px;
+}
+#contentSidebar .item {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 90%;
+    display: block;
+    transition: background .25s ease;
+}
+#contentSidebar .wrapper.index .index, #contentSidebar .wrapper.notes .notes, #contentSidebar .wrapper.exercises .exercises, #contentSidebar .wrapper.mock .mock, #contentSidebar .wrapper.about .about {
+    background: #fff;
+    color: #404040;
+    font-weight: 700;
+}
+#contentSidebar .item:hover {
+    background: #4A4B4E;
+}
+
+#contentSidebar .bottom {
+    margin-top: auto;
+}
+#contentSidebar .center {
+    text-align: center;
+}
+#contentSidebar #copyright {
+    color: #999;
+}
+#contentSidebar #copyright:hover {
+    background: initial !important;
+    text-decoration: underline;
+}
+
+#contentSidebar .toggles {
+    display: flex;
+    border-bottom: 1px solid #999;
+}
+#contentSidebar .toggles .class-toggle {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: color .2s ease, background .2s ease;
+    background: #e3e3e3;
+    color: #404040;
+    font-weight: 700;
+}
+#contentSidebar .COMP1805 .COMP1805, #contentSidebar .COMP2804 .COMP2804, #contentSidebar .toggles .class-toggle:hover {
+    background: #fff;
+    color: #404040;
+}
