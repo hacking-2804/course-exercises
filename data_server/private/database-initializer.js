@@ -7,8 +7,6 @@ var stream = fs.createReadStream("./files/DiscMath_Database_Additions_-_Sheet1.c
 
 let mongo = require('../config/mongo-config.js');
 
-mongo.find();
-
 
 
 let dataObjects = [];
@@ -33,6 +31,14 @@ var csvStream = csv()
             dataItems.push(dataItem);
         }
         // console.log(dataItems);
+        mongo.wipe(function(err, result){
+            mongo.insertMany(dataItems, function(err, result){
+                mongo.findAll(function(err, dataResult){
+                    console.log("THE DATA RESULT");
+                    console.log(dataResult.length);
+                });
+            });
+        });
     });
  
 stream.pipe(csvStream);

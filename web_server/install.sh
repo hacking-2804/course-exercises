@@ -7,4 +7,3 @@ npm i ejs
 npm i cookie-parser
 npm i request-ip
 npm i socket.io-client
-mv node_modules ../
