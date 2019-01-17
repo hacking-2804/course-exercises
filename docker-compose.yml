@@ -9,15 +9,23 @@ services:
     volumes:
       - data-volume:/data/db
     ports:
-      - '27017:27017'
+      - '4002:27017'
+    logging:
+      driver: none
   web-server:
     build:
       context: ./
       dockerfile: web_server/dockerfile
+    ports:
+      - '4000:4000'
+
+      #THIS IS MY DOMAIN PEASANT
+      #BEGONE THOT
   data-server:
     build:
       context: data_server/
       dockerfile: dockerfile
-
+    ports:
+      - '4001:4001'
 volumes:
   data-volume:

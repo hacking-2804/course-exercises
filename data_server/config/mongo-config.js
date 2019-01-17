@@ -18,20 +18,26 @@ console.log(options);
 var mongooseConnectionString = 'mongodb://' + process.env.MONGO_IP + ":" + process.env.MONGO_PORT + '/' + process.env.MONGO_DBNAME +'?authSource=' + process.env.MONGO_AUTHSOURCE;
 mongoose.connect(mongooseConnectionString,options);
 
-function find(){
+function findAll(callback){
     console.log("FINDING...");
-    model.find({}, function(err, result){
-        console.log("MONGO CONFIG :: THE RESULTS OF THE FIND");
-        console.log(err);
-        console.log(result);
-    });
+    model.find({}, callback);
 }
 
 function update(){
 
 }
 
+function wipe(callback){
+    model.deleteMany({}, callback);
+}
+
+function insertMany(items, callback){
+    model.insertMany(items, callback);
+}
+
 module.exports = {
-    find: find,
-    update: update
+    findAll: findAll,
+    insertMany: insertMany,
+    update: update,
+    wipe: wipe,
 };
