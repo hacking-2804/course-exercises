@@ -1,6 +1,8 @@
 FROM node:8.11.4-alpine
 
-COPY ./ /app
+COPY ./web_server /app
+COPY ./package-lock.json /app
+COPY ./package.json /app
 
 WORKDIR /app
 
