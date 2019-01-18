@@ -15,7 +15,7 @@ services:
   web-server:
     build:
       context: ./
-      dockerfile: web_server/dockerfile
+      dockerfile: web_server/Dockerfile
     ports:
       - '4000:4000'
 
@@ -24,7 +24,7 @@ services:
   data-server:
     build:
       context: data_server/
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - '4001:4001'
 volumes:
