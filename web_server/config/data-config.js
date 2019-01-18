@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: require('find-config')('.env') })
 var initListeners = true;
 
 /*
@@ -8,6 +8,7 @@ var initListeners = true;
 */
 
 var internalIO = require('socket.io-client');
+console.log(`${process.env.DATA_SERVER_BASE}:${process.env.DATA_SERVER_PORT}`);
 let internalSocket = internalIO.connect(`${process.env.DATA_SERVER_BASE}:${process.env.DATA_SERVER_PORT}`, {
     reconnection: true
 });

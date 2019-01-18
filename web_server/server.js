@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({ path: require('find-config')('.env') })
 var fs = require('fs');
 
 // Server requires
@@ -39,8 +39,8 @@ app.use(bodyParser.json());
 
 // Use EJS as our template engine
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../public/views'));
-app.set('partials', path.join(__dirname, '../public/views/partials'));
+app.set('views', path.join(__dirname, './public/views'));
+app.set('partials', path.join(__dirname, './public/views/partials'));
 
 
 // Always print the path of request
@@ -52,28 +52,28 @@ app.use(function(req, res, next) {
 
 // Configurations for the dev environment
 if (app.get('env') === 'development') {
-    app.use("/css", express.static(__dirname + '/../css'));
-    app.use("/js", express.static(__dirname + '/../js'));
+    app.use("/css", express.static(__dirname + '/css'));
+    app.use("/js", express.static(__dirname + '/js'));
 
-    app.use("/img", express.static(__dirname + "/../public/img"));
-    app.use("/logo", express.static(__dirname + "/../public/logo"));
-    app.use("/ic", express.static(__dirname + "/../public/ic"));
-    app.use("/bic", express.static(__dirname + "/../public/bic"));
+    app.use("/img", express.static(__dirname + "/public/img"));
+    app.use("/logo", express.static(__dirname + "/public/logo"));
+    app.use("/ic", express.static(__dirname + "/public/ic"));
+    app.use("/bic", express.static(__dirname + "/public/bic"));
     
-    app.use("/chartist", express.static(__dirname + "/../node_modules/chartist"));
-    app.use("/amcharts", express.static(__dirname + "/../js/amcharts"));
+    app.use("/chartist", express.static(__dirname + "/node_modules/chartist"));
+    app.use("/amcharts", express.static(__dirname + "/js/amcharts"));
 }
 
-console.log(__dirname + '/../js');
+console.log(__dirname + '/js');
 
 // Load routes and pass in our app
-require('../app/routes.js')(app);
+require('./app/routes.js')(app);
 
 function errorHandler (err, req, res, next) {
     res.status(500);
     res.render('pages/error/default', { error: err });
 }
 
-server.listen(4000, function() {
+server.listen(process.env.SERVER_PORT, function() {
     console.log('Listening on port 8000');
 });
