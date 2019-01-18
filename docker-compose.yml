@@ -18,9 +18,6 @@ services:
       dockerfile: web_server/Dockerfile
     ports:
       - '4000:4000'
-
-      #THIS IS MY DOMAIN PEASANT
-      #BEGONE THOT
   data-server:
     build:
       context: data_server/

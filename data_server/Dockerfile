@@ -1,8 +1,8 @@
 FROM node:8.11.4-alpine
 
-COPY ./ /app/
+COPY ./ /app
 
-WORKDIR /app/
+WORKDIR /app
 
 RUN ./install.sh
 
